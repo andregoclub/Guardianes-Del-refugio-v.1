@@ -4,7 +4,6 @@ public class PlayerStamina : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private StaminaHUD hud;
-    [SerializeField] private Animator animator;
 
     [Header("Stamina")]
     [SerializeField] private float maxStamina = 100f;
@@ -14,10 +13,6 @@ public class PlayerStamina : MonoBehaviour
     [SerializeField] private float exhaustedRegenDelay = 2f;  // pausa si se quedó en 0
     [SerializeField] private float minToActAgain = 20f;       // mínimo para volver a correr/dash
 
-    [Header("Dash")]
-    [SerializeField] private KeyCode dashKey = KeyCode.Alpha3;
-    [SerializeField] private float dashCost = 25f;
-
     private LogicaKobu movimiento;
     private float current;
     private float lastUseTime;
@@ -26,7 +21,6 @@ public class PlayerStamina : MonoBehaviour
     void Awake()
     {
         movimiento = GetComponent<LogicaKobu>();
-        if (animator == null) animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -44,14 +38,6 @@ public class PlayerStamina : MonoBehaviour
         {
             current -= drainPerSecond * Time.deltaTime;
             lastUseTime = Time.time;
-        }
-
-        // Dash
-        if (Input.GetKeyDown(dashKey) && !exhausted && current >= dashCost)
-        {
-            current -= dashCost;
-            lastUseTime = Time.time;
-            if (animator != null) animator.SetTrigger("Dash");
         }
 
         current = Mathf.Clamp(current, 0f, maxStamina);
@@ -79,4 +65,17 @@ public class PlayerStamina : MonoBehaviour
     }
 
     public bool CanSprint() => !exhausted && current > 0f;
+
+    /// <summary>
+    /// Intenta gastar stamina para una acción puntual (dash, etc.).
+    /// Devuelve true si había suficiente y se descontó.
+    /// </summary>
+    public bool TryConsume(float cost)
+    {
+        if (exhausted || current < cost) return false;
+
+        current -= cost;
+        lastUseTime = Time.time;
+        return true;
+    }
 }

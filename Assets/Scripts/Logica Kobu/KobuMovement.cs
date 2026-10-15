@@ -18,7 +18,8 @@ public class LogicaKobu : MonoBehaviour
     public Transform puntoPies;
 
     private KobuAttack ataque;
-    private PlayerStamina stamina; // NUEVO
+    private PlayerStamina stamina;
+    private PlayerDash dash; // NUEVO
 
     public bool estoyCorriendo;
     private bool estabaEnElAire;
@@ -28,12 +29,14 @@ public class LogicaKobu : MonoBehaviour
         puedoSaltar = false;
         anim = GetComponent<Animator>();
         ataque = GetComponent<KobuAttack>();
-        stamina = GetComponent<PlayerStamina>(); // NUEVO
+        stamina = GetComponent<PlayerStamina>();
+        dash = GetComponent<PlayerDash>(); // NUEVO
     }
 
     void FixedUpdate()
     {
-        if (!ataque.estoyAtacando)
+        // NUEVO: mientras dura el dash, el movimiento normal no se aplica
+        if (!ataque.estoyAtacando && (dash == null || !dash.EstaDasheando))
         {
             transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
 
@@ -49,7 +52,7 @@ public class LogicaKobu : MonoBehaviour
 
         if (!ataque.estoyAtacando)
         {
-            // NUEVO: solo corre si la stamina lo permite
+            // Solo corre si la stamina lo permite
             bool puedeCorrer = stamina == null || stamina.CanSprint();
             estoyCorriendo = Input.GetKey(KeyCode.LeftShift) && y > 0.1f && puedeCorrer;
 

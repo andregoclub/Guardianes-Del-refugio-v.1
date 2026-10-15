@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/BarraVida/BarraStamina.uss?fileID=7433441132597879392&amp;guid=2e8cfab2cea804a4ba48088e731a999f&amp;type=3#BarraStamina"/>
-    <ui:VisualElement name="Stamina-background" style="width: 507px; height: 28px; margin-left: 9px; margin-top: 14px; background-color: rgb(51, 51, 51); border-top-left-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px;">
-        <ui:VisualElement name="stamina-fill" class="vida"/>
+    <ui:VisualElement name="Stamina-background" style="width: 507px; height: 28px; margin-left: 9px; margin-top: 14px; background-color: rgb(51, 51, 51); border-top-left-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; top: 46px;">
+        <ui:VisualElement name="stamina-fill" class="vida" style="top: 2px; left: -1px; background-color: rgba(63, 168, 255, 0.95);"/>
     </ui:VisualElement>
 </ui:UXML>
