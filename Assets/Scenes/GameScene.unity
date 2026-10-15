@@ -8671,12 +8671,12 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 13.858139
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
   m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 21.946, y: 16.002}
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -8716,7 +8716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBrain
-  ShowDebugText: 0
+  ShowDebugText: 1
   ShowCameraFrustum: 1
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
@@ -12400,10 +12400,10 @@ MonoBehaviour:
         z: 7.2501564
       Rotation:
         value:
-          x: 0.114767715
-          y: 0.24609458
+          x: 0.11476771
+          y: 0.24609455
           z: -0.06531941
-          w: 0.960208
+          w: 0.96020794
     - Position:
         x: -141.53
         y: 14.85
@@ -57507,6 +57507,10 @@ PrefabInstance:
     - target: {fileID: 467896026514781190, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       propertyPath: velocidadRotacion
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028061356294401098, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2590321540612860871, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       propertyPath: textoLlaves
