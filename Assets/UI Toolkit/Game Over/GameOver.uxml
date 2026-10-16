@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/EstilosBotones/BotonJugar.uss?fileID=7433441132597879392&amp;guid=9b98e07f0bfbede4cab7f0702ec711d3&amp;type=3#BotonJugar"/>
+    <ui:VisualElement name="Contenedor" style="flex-grow: 1; margin-top: -582px; -unity-background-image-tint-color: rgb(0, 0, 0);">
+        <ui:Image name="Image" style="background-image: url(&quot;project://database/Assets/Art/images.jpg?fileID=2800000&amp;guid=ca33e70dfdef50a488926895399822c7&amp;type=3#images&quot;); border-top-width: 1076px; background-position-x: left 0; background-position-y: top 0; -unity-background-scale-mode: scale-and-crop; margin-top: 0; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); top: 581px; height: 1085px; width: 1926px;"/>
+        <ui:Button text="Menu" name="Menu" class="Boton" style="align-self: flex-end; margin-top: 0; margin-left: 154px; margin-right: 137px; top: 385px;"/>
+        <ui:Button text="Restart" name="Restart" class="Boton" style="align-self: flex-start; margin-top: -161px; margin-left: 162px; top: 385px;"/>
+    </ui:VisualElement>
+</ui:UXML>

@@ -28,6 +28,7 @@ public class KobuHealth : MonoBehaviour
     [SerializeField] private LogicaKobu logicaKobu;
     [SerializeField] private KobuAttack kobuAttack;
     [SerializeField] private PlayerRespawn playerRespawn;
+    [SerializeField] private PlayerDash playerDash; // NUEVO
 
     [Header("Feedback de daño recibido")]
 
@@ -51,6 +52,9 @@ public class KobuHealth : MonoBehaviour
         if (playerRespawn == null)
             playerRespawn = GetComponent<PlayerRespawn>();
 
+        if (playerDash == null) // NUEVO
+            playerDash = GetComponent<PlayerDash>();
+
         if (playerFlash == null)
             playerFlash = GetComponent<PlayerFlash>();
 
@@ -61,6 +65,12 @@ public class KobuHealth : MonoBehaviour
 
     public void RecibirDaño(int daño)
     {
+        // NUEVO: si ya está muerto, los golpes siguientes se ignoran
+        if (EstaMuerto) return;
+
+        // NUEVO: mientras dura el dash, Kobu esquiva el golpe
+        if (playerDash != null && playerDash.EsInvulnerable) return;
+
         vidaActual -= daño;
 
         // Flash del modelo.
@@ -93,6 +103,10 @@ public class KobuHealth : MonoBehaviour
     public void RestaurarVida()
     {
         vidaActual = vidaTotal;
+
+        // NUEVO: el dash se reactiva junto con el resto
+        if (playerDash != null)
+            playerDash.enabled = true;
     }
 
 
@@ -115,5 +129,15 @@ public class KobuHealth : MonoBehaviour
 
         logicaKobu.enabled = false;
         kobuAttack.enabled = false;
+
+        // NUEVO: tampoco se puede dashear estando muerto
+        if (playerDash != null)
+            playerDash.enabled = false;
+
+        // NUEVO: pantalla de Game Over (aparece tras una breve espera)
+        if (GameOverController.Instancia != null)
+            GameOverController.Instancia.Mostrar();
+        else
+            Debug.LogWarning("No hay un GameOverController en la escena.");
     }
 }

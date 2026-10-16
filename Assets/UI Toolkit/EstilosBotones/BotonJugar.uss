@@ -8,7 +8,7 @@
     align-self: center;
     align-items: flex-end;
     right: auto;
-    margin-top: 99px;
+    margin-top: 87px;
     left: 0;
     bottom: 0;
     margin-left: 0;
@@ -34,10 +34,11 @@
 
 
 
-.boton:hover {
-    scale: 1.5 1.5 1.5;
-    background-color: rgba(66, 215, 125, 0.39);
-}
+
+
+
 
 .Boton:hover {
+    scale: 1.5 1.5 1.5;
+    background-color: rgba(66, 215, 125, 0.62);
 }

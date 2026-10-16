@@ -75,6 +75,9 @@ public class PauseMenuController : MonoBehaviour
     {
         if (!Input.GetKeyDown(teclaPausa)) return;
 
+        // Con el Game Over en pantalla no se puede abrir la pausa
+        if (GameOverController.JuegoTerminado) return;
+
         if (pausado) Reanudar();
         else Pausar();
     }

@@ -41,13 +41,15 @@ public class PlayerRespawn : MonoBehaviour
     }
 
 
-    
     /// Respawnea a Kobu después de morir.
     /// Este método es llamado por el Animation Event
     /// al finalizar la animación de muerte.
 
     public void Respawnear()
     {
+        // NUEVO: si hay Game Over, el jugador no reaparece solo
+        if (GameOverController.JuegoTerminado) return;
+
         // Colocamos a Kobu en el punto de respawn.
         transform.position = playerSpawn.position;
 

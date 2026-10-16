@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/EstilosBotones/BotonJugar.uss?fileID=7433441132597879392&amp;guid=9b98e07f0bfbede4cab7f0702ec711d3&amp;type=3#BotonJugar"/>
     <ui:VisualElement style="flex-grow: 1; position: relative; background-image: url(&quot;project://database/Assets/Art/Guardianes.png?fileID=2800000&amp;guid=dc5264118f78ff44497ef6ca4779ac1d&amp;type=3#Guardianes&quot;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.8);">
         <ui:VisualElement style="flex-grow: 1; position: absolute; height: 516px; width: 977px; top: 0%; left: 0%; background-image: url(&quot;project://database/Assets/Art/Logo.png?fileID=2800000&amp;guid=0a4ce74226695dd4d89a27d00596b5a3&amp;type=3#Logo&quot;); align-self: flex-start; align-items: center; margin-top: 44px; margin-left: 25px;"/>
-        <ui:Button text="Jugar" name="PlayButton" class="Boton" style="border-top-left-radius: 50px; margin-top: 642px;"/>
-        <ui:Button text="Salir" name="QuitButton" class="Boton" style="margin-top: 40px;"/>
+        <ui:Button text="Jugar" name="PlayButton" class="Boton" style="border-top-left-radius: 50px; margin-top: 595px; margin-right: 11px; align-self: flex-start; margin-left: 236px; padding-left: 12px;"/>
+        <ui:Button text="Salir" name="QuitButton" class="Boton" style="margin-top: 40px; margin-left: 236px; align-self: flex-start;"/>
     </ui:VisualElement>
 </ui:UXML>
