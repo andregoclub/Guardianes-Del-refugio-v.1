@@ -5,13 +5,13 @@
     height: 160px;
     width: 600px;
     top: auto;
-    align-self: flex-start;
+    align-self: center;
     align-items: flex-end;
     right: auto;
-    margin-top: 642px;
+    margin-top: 99px;
     left: 0;
     bottom: 0;
-    margin-left: 187px;
+    margin-left: 0;
     font-size: 107px;
     -unity-font-style: bold;
     -unity-font-definition: url("project://database/Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Fonts/PerfectDOSVGA437.ttf?fileID=12800000&guid=74a5091d8707f334b9a5c31ef71a64ba&type=3#PerfectDOSVGA437");
@@ -32,7 +32,12 @@
     -unity-text-outline-width: 6px;
 }
 
+
+
+.boton:hover {
+    scale: 1.5 1.5 1.5;
+    background-color: rgba(66, 215, 125, 0.39);
+}
+
 .Boton:hover {
-    scale: 1.1 1.1;
-    background-color: rgba(7, 224, 16, 0.58);
 }

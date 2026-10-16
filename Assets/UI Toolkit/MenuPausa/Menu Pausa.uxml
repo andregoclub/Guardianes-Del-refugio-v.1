@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ui="UnityEngine.UIElements"
-    xmlns:uie="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/EstilosBotones/BotonJugar.uss?fileID=7433441132597879392&amp;guid=9b98e07f0bfbede4cab7f0702ec711d3&amp;type=3#BotonJugar"/>
+    <Style src="project://database/Assets/UI%20Toolkit/EstilosBotones/MenuStyle.uss?fileID=7433441132597879392&amp;guid=e7b59475e20642645b3a76cec95873d8&amp;type=3#MenuStyle"/>
+    <ui:VisualElement name="Contenedor" style="flex-grow: 1;">
+        <ui:Label text="Menu Pausa" name="Pausa" class="header" style="justify-content: space-evenly; -unity-text-align: upper-right; margin-left: 0; font-size: 160px;"/>
+        <ui:Button text="Resume" name="Resume" class="Boton boton" style="-unity-text-align: lower-center;"/>
+        <ui:Button text="Restart" name="Restart" class="Boton boton" style="-unity-text-align: lower-center;"/>
+        <ui:Button text="Menu" name="MenuPrincipal" class="Boton boton" style="-unity-text-align: lower-center;"/>
+    </ui:VisualElement>
 </ui:UXML>

@@ -37,6 +37,7 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenuController.EstaPausado) return;
         if (!Input.GetKeyDown(dashKey)) return;
         if (EstaDasheando) return;
         if (bloquearDuranteAtaque && ataque != null && ataque.estoyAtacando) return;

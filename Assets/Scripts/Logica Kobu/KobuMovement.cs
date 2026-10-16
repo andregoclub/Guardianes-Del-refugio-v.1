@@ -73,7 +73,7 @@ public class LogicaKobu : MonoBehaviour
         {
             if (!ataque.estoyAtacando)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && !PauseMenuController.EstaPausado)
                 {
                     anim.SetBool("Salto", true);
                     estabaEnElAire = true;

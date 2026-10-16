@@ -15,6 +15,9 @@ public class KobuAttack : MonoBehaviour
 
     void Update()
     {
+        // NUEVO: no atacar mientras el juego está en pausa
+        if (PauseMenuController.EstaPausado) return;
+
         if (Input.GetKeyDown(KeyCode.Mouse0) && !estoyAtacando)
         {
             if (siguienteGolpeDerecho)
