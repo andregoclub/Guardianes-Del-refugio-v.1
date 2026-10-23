@@ -19,7 +19,8 @@ public class LogicaKobu : MonoBehaviour
 
     private KobuAttack ataque;
     private PlayerStamina stamina;
-    private PlayerDash dash; // NUEVO
+    private PlayerDash dash;
+    private TargetLock targetLock; // NUEVO
 
     public bool estoyCorriendo;
     private bool estabaEnElAire;
@@ -30,17 +31,31 @@ public class LogicaKobu : MonoBehaviour
         anim = GetComponent<Animator>();
         ataque = GetComponent<KobuAttack>();
         stamina = GetComponent<PlayerStamina>();
-        dash = GetComponent<PlayerDash>(); // NUEVO
+        dash = GetComponent<PlayerDash>();
+        targetLock = GetComponent<TargetLock>(); // NUEVO
     }
 
     void FixedUpdate()
     {
-        // NUEVO: mientras dura el dash, el movimiento normal no se aplica
-        if (!ataque.estoyAtacando && (dash == null || !dash.EstaDasheando))
+        // Mientras ataca o dashea, el movimiento normal no se aplica
+        if (ataque.estoyAtacando || (dash != null && dash.EstaDasheando)) return;
+
+        float velocidadActual = estoyCorriendo ? velocidadCorrer : velocidad;
+
+        if (targetLock != null && targetLock.EstaFijado)
+        {
+            // NUEVO: con un objetivo fijado, TargetLock gira a Kobu hacia el enemigo.
+            // A y D lo desplazan de lado alrededor del enemigo; W y S avanzan y retroceden.
+            Vector2 movimiento = Vector2.ClampMagnitude(new Vector2(x, y), 1f);
+
+            transform.Translate(
+                movimiento.x * Time.deltaTime * velocidad,
+                0,
+                movimiento.y * Time.deltaTime * velocidadActual);
+        }
+        else
         {
             transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-
-            float velocidadActual = estoyCorriendo ? velocidadCorrer : velocidad;
             transform.Translate(0, 0, y * Time.deltaTime * velocidadActual);
         }
     }

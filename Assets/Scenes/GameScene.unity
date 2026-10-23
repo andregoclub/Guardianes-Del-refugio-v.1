@@ -57609,6 +57609,13 @@ MonoBehaviour:
   dashDuration: 0.25
   dashHaciaAtrasConS: 0
   bloquearDuranteAtaque: 1
+  multiplicadorLateral: 0.65
+  multiplicadorAtras: 1
+  triggerAdelante: Dash
+  triggerIzquierda: DashIzquierda
+  triggerDerecha: DashDerecha
+  triggerAtras: DashAtras
+  mostrarDebug: 0
 --- !u!114 &6431403872963005182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57628,6 +57635,26 @@ MonoBehaviour:
   regenDelay: 1
   exhaustedRegenDelay: 2
   minToActAgain: 20
+--- !u!114 &6431403872963005185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591334563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbda0fd753fac940a3fa4aa7e42758e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetLock
+  teclaFijar: 113
+  teclaCambiar: 9
+  radioMaximo: 10
+  distanciaSoltar: 6
+  cambiarAlMorir: 1
+  velocidadGiro: 540
+  colorMarcador: {r: 1, g: 0.15, b: 0.15, a: 1}
+  radioMarcador: 0.8
 --- !u!1001 &6601649920857214023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57663,6 +57690,18 @@ PrefabInstance:
     - target: {fileID: 1028061356294401098, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330055375619516562, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2409
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330055375619516562, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330055375619516562, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.31
       objectReference: {fileID: 0}
     - target: {fileID: 2590321540612860871, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       propertyPath: textoLlaves
@@ -57720,9 +57759,21 @@ PrefabInstance:
       propertyPath: Priority
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 4444022544756431124, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: MinDistance
+      value: 1.0825667
+      objectReference: {fileID: 0}
     - target: {fileID: 7062568247302123628, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       propertyPath: m_Name
       value: Kobu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691706847916612153, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0806
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691706847916612153, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6944
       objectReference: {fileID: 0}
     - target: {fileID: 7773246791983332298, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57778,6 +57829,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7062568247302123628, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6431403872963005181}
+    - targetCorrespondingSourceObject: {fileID: 7062568247302123628, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6431403872963005185}
   m_SourcePrefab: {fileID: 100100000, guid: 8e405d70b27f9844d8c957725d1f1efa, type: 3}
 --- !u!1001 &7734032593802082721
 PrefabInstance:
