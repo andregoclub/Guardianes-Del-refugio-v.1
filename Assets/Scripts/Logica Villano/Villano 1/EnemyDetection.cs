@@ -10,6 +10,7 @@ public class EnemyDetection : MonoBehaviour
     [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private KobuHealth kobuHealth;
     [SerializeField] private EnemyHealth enemyHealth;
+    [SerializeField] private EnemyPatrol enemyPatrol;   // NUEVO
 
     [Header("Detección")]
 
@@ -37,6 +38,9 @@ public class EnemyDetection : MonoBehaviour
 
         if (enemyAttack == null)
             enemyAttack = GetComponent<EnemyAttack>();
+
+        if (enemyPatrol == null)   // NUEVO
+            enemyPatrol = GetComponent<EnemyPatrol>();
 
         if (kobuHealth == null && jugador != null)
         {
@@ -85,8 +89,14 @@ public class EnemyDetection : MonoBehaviour
 
         if (distancia > radioDeteccion)
         {
-            enemyMovement.Detener();
             DetenerSonido();
+
+            // NUEVO: si tiene ruta, patrulla; si no, se queda quieto como antes
+            if (enemyPatrol != null && enemyPatrol.TieneRuta)
+                enemyPatrol.Actualizar();
+            else
+                enemyMovement.Detener();
+
             return;
         }
 
