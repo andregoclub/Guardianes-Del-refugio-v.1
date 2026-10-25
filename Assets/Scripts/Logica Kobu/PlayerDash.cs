@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerStamina))]
 public class PlayerDash : MonoBehaviour
 {
-    private enum DireccionDash { Adelante, Izquierda, Derecha, Atras }
+    private enum DireccionDash { Adelante, Izquierda, Derecha }
 
     [Header("Referencias")]
     [SerializeField] private Animator animator;
@@ -16,21 +16,17 @@ public class PlayerDash : MonoBehaviour
     [Header("Desplazamiento")]
     [SerializeField] private float dashDistance = 2.5f;   // metros que avanza
     [SerializeField] private float dashDuration = 0.25f;  // segundos (ajustalo a la duración de tu animación)
-    [SerializeField] private bool dashHaciaAtrasConS = true; // si mantenés S, esquiva hacia atrás
     [SerializeField] private bool bloquearDuranteAtaque = true;
 
     [Header("Distancia según la dirección")]
     [Tooltip("1 = misma distancia que hacia adelante. Menos de 1 = dash de lado más corto (la animación no cambia).")]
     [Range(0.2f, 1.5f)]
     [SerializeField] private float multiplicadorLateral = 0.65f;
-    [Range(0.2f, 1.5f)]
-    [SerializeField] private float multiplicadorAtras = 1f;
 
     [Header("Triggers del Animator")]
     [SerializeField] private string triggerAdelante = "Dash";
     [SerializeField] private string triggerIzquierda = "DashIzquierda";
     [SerializeField] private string triggerDerecha = "DashDerecha";
-    [SerializeField] private string triggerAtras = "DashAtras";
 
     [Header("Diagnóstico")]
     [Tooltip("Escribe en la consola qué dirección y qué trigger se usó en cada dash.")]
@@ -66,7 +62,7 @@ public class PlayerDash : MonoBehaviour
     {
         if (animator == null) return;
 
-        foreach (string nombre in new[] { triggerAdelante, triggerIzquierda, triggerDerecha, triggerAtras })
+        foreach (string nombre in new[] { triggerAdelante, triggerIzquierda, triggerDerecha })
         {
             if (string.IsNullOrEmpty(nombre)) continue;
 
@@ -94,7 +90,6 @@ public class PlayerDash : MonoBehaviour
         if (!stamina.TryConsume(dashCost)) return;
 
         DireccionDash direccion = ElegirDireccion();
-
         string trigger = NombreTrigger(direccion);
 
         if (mostrarDebug)
@@ -106,16 +101,14 @@ public class PlayerDash : MonoBehaviour
         StartCoroutine(DashRoutine(direccion));
     }
 
-    // Con objetivo fijado: A/D esquivan de lado. Siempre: S esquiva hacia atrás. Si no, hacia adelante.
+    // Con objetivo fijado: A/D esquivan de lado. En cualquier otro caso, hacia adelante.
     DireccionDash ElegirDireccion()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
         bool fijado = targetLock != null && targetLock.EstaFijado;
 
         if (fijado && x < -0.1f) return DireccionDash.Izquierda;
         if (fijado && x > 0.1f) return DireccionDash.Derecha;
-        if (dashHaciaAtrasConS && y < -0.1f) return DireccionDash.Atras;
 
         return DireccionDash.Adelante;
     }
@@ -126,7 +119,6 @@ public class PlayerDash : MonoBehaviour
         {
             DireccionDash.Izquierda => triggerIzquierda,
             DireccionDash.Derecha => triggerDerecha,
-            DireccionDash.Atras => triggerAtras,
             _ => triggerAdelante
         };
 
@@ -136,16 +128,7 @@ public class PlayerDash : MonoBehaviour
 
     float DistanciaPara(DireccionDash direccion)
     {
-        switch (direccion)
-        {
-            case DireccionDash.Izquierda:
-            case DireccionDash.Derecha:
-                return dashDistance * multiplicadorLateral;
-            case DireccionDash.Atras:
-                return dashDistance * multiplicadorAtras;
-            default:
-                return dashDistance;
-        }
+        return direccion == DireccionDash.Adelante ? dashDistance : dashDistance * multiplicadorLateral;
     }
 
     Vector3 VectorDireccion(DireccionDash direccion)
@@ -154,7 +137,6 @@ public class PlayerDash : MonoBehaviour
         {
             case DireccionDash.Izquierda: return -transform.right;
             case DireccionDash.Derecha: return transform.right;
-            case DireccionDash.Atras: return -transform.forward;
             default: return transform.forward;
         }
     }
